@@ -33,6 +33,21 @@ public class PessoaService {
 
 		return this.toPessoaDTO(pessoasalva);
 	}
+	
+	public PessoaDTO edit(PessoaDTO pessoaDTO){
+		Pessoa pessoa = this.toPessoa(pessoaDTO);
+
+		Pessoa pessoasalva = pessoaRepository.save(pessoa);
+
+		return this.toPessoaDTO(pessoasalva);
+	}
+	
+	public String delete(long id){
+
+		pessoaRepository.deleteById(id);
+		
+		return "OK";
+	}
 
 	private PessoaDTO toPessoaDTO(Pessoa pessoa) {
 		PessoaDTO pessoaDTO = new PessoaDTO();
